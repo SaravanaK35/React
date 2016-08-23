@@ -1,0 +1,195 @@
+.text-info{
+  padding-left: 50px;
+  background-color: red;
+  height: 100px;
+  padding-top: 50px;
+}
+
+
+/*
+
+My Custom CSS
+=============
+
+Author:  Brad Hussey
+Updated: August 2013
+Notes:	 Hand coded for Udemy.com
+
+*/
+.mainCont{
+  margin-top: 200px;
+}
+
+/* --------------------------------------
+   Layout
+   -------------------------------------- */
+#features{
+   text-align: center;
+
+}
+#features img{
+margin: 0 0 20px;
+}
+
+footer{
+   background: #333;
+   color: #eee;
+   font-size: 11px;
+   padding: 20px;
+}
+.panel{
+   height: 400px;
+}
+
+
+#features .panel{
+   height: 450px;
+}
+
+/* --------------------------------------
+   Typography
+   -------------------------------------- */
+body{
+   -webkit-font-smoothing: antialiased;
+   text-rendering: optimizelegibility;
+}
+
+.well .page-header {
+   margin-top: 0;
+
+}
+.well .page-header h1{
+margin-top: 0;
+}
+
+ul.unstyled{
+   display: inline;
+   list-style: none;
+   padding: 0;
+}
+/* --------------------------------------
+   Navbar
+   -------------------------------------- */
+.navbar-brand{
+      padding: 13px 15px;
+   }
+#thatsyfood{
+   font-size: 40px;
+   font-family: Viner Hand ITC;
+   color: #FFF;
+   padding: 20px 0 20px 10px;
+}
+#nav{
+ padding: 20px 0 20px 10px;
+}
+.navbar{
+  /* background: #C4DED9;*/
+
+}
+
+/* --------------------------------------
+   Carousel
+   -------------------------------------- */
+
+#mycarousel .item{
+   height: 400px;
+}
+#mycarousel {
+   margin-top: 120px;
+}
+
+#slide1{
+   background: url('../../images/restaurant_1_lg.jpg') top center no-repeat;
+}
+#slide2{
+   background: url('../../images/restaurant_2_lg.jpg') top center no-repeat;
+}
+#slide3{
+   background: url('../../images/restaurant_3_lg.jpg') top center no-repeat;
+}
+.carousel-caption{
+font-size: 24px
+}
+.carousel-caption h4{
+   font-size: 32px
+}
+/* --------------------------------------
+   Global Styles
+   -------------------------------------- */
+.well{
+   margin: 20px 0;
+}
+
+
+#myjumbotron{
+   height: 400px;
+   background: url('../../images/mercer-gallery-1_lg.jpeg') top center no-repeat;
+}
+ #food{
+   font-size: 14px;
+   color: white;
+}
+
+/* --------------------------------------
+   Media Queries
+   -------------------------------------- */
+
+/* Portrait & landscape phone */
+@media (max-width: 480px) {
+
+
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 768px) {
+   #mycarousel .item{
+   height: 310px;
+}
+#slide1{
+   background: url('../../images/restaurant_1_sm.jpg') top center no-repeat;
+}
+#slide2{
+   background: url('../../images/restaurant_2_sm.jpg') top center no-repeat;
+}
+#slide3{
+   background: url('../../images/restaurant_3_sm.jpg') top center no-repeat;
+}
+.carousel-caption{
+font-size: 10px
+}
+.carousel-caption h4{
+   font-size: 16px
+}
+#myjumbotron{
+
+   background: url('../../images/mercer-gallery-1_sm.jpeg') top center no-repeat;
+}
+.jumbotron #food{
+   font-size: 16px;
+   color: red;
+}
+}
+
+/* Large desktop */
+@media (min-width: 1200px) {
+#mycarousel .item{
+   height: 500px;
+}
+#slide1{
+   background: url('../../images/restaurant_1_lg.jpg') top center no-repeat;
+}
+#slide2{
+   background: url('../../images/restaurant_2_lg.jpg') top center no-repeat;
+}
+#slide3{
+   background: url('../../images/restaurant_3_lg.jpg') top center no-repeat;
+}
+#myjumbotron{
+
+   background: url('../../images/mercer-gallery-1_lg.jpeg') top center no-repeat;
+}
+
+.jumbotron #food{
+   font-size: 20px;
+color: red;
+}
+}
