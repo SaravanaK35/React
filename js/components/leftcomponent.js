@@ -1,11 +1,12 @@
 var React=require('react');
-var Grandchild=require('./component2_child');
-var Childcomponent_2=React.createClass({
+var Left_child_component=require('./leftcomponent_child');
+var Leftcomponent=React.createClass({
 
   render:function(){
+
 		var idName = this.props.data2.map(function(id_name) {
            return (
-                  <Grandchild id={id_name.id} name={id_name.name} />
+                  <Left_child_component id={id_name.id} name={id_name.name} />
              );
 						 });
 		return(
@@ -16,4 +17,4 @@ var Childcomponent_2=React.createClass({
 }
 });
 
-module.exports=Childcomponent_2;
+module.exports=Leftcomponent;

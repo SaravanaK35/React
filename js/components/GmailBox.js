@@ -1,13 +1,15 @@
 var React = require('react');
 var Childcomponent_1=require('./component1');
-var Childcomponent_2=require('./component2');
-var Childcomponent_3=require('./component3');
+var Leftcomponent=require('./leftcomponent');
+var Rightcomponent=require('./rightcomponent');
+var Left_child_component=require('./leftcomponent_child');
 var loadedData = false;
 var Gmail_auth = React.createClass({
  getInitialState: function()
    {
-     return({allLabelsData:[]});
+     return({allLabelsData:[],allInboxID:[]});
    },
+
  gmailLogin: function()
  {
    var acToken, tokenType, expiresIn;
@@ -53,6 +55,7 @@ var Gmail_auth = React.createClass({
        }
    }, 500);
    this.allLabels();
+
  },
 
 
@@ -77,6 +80,31 @@ var Gmail_auth = React.createClass({
       }.bind(this)
    });
 
+   $.ajax({
+     url: 'https://www.googleapis.com/gmail/v1/users/me/messages?key={AIzaSyAaOBSpOI5VpQ4TlFs-NqQ0T-3Dr3xU4EM}',
+     dataType: 'json',
+     type: 'GET',
+     async:'false',
+     beforeSend: function (request)
+     {
+       request.setRequestHeader("Authorization", "Bearer "+accessToken);
+     },
+     success: function(data)
+     {
+
+       this.setState({allInboxID:data.messages});
+
+       loadedData=true;
+     }.bind(this),
+     error: function(xhr, status, err) {
+       console.error(err.toString());
+     }.bind(this)
+
+   });
+
+
+
+
  },
 
 
@@ -86,8 +114,9 @@ var Gmail_auth = React.createClass({
    var rightPanel;
 
    if(loadedData){
-     leftPanel =  <Childcomponent_2 data2={this.state.allLabelsData} />
-     rightPanel='  Work In Progress..........';
+
+    leftPanel =  <Leftcomponent data2={this.state.allLabelsData} />
+     rightPanel= <Rightcomponent data3={this.state.allInboxID} />
    }
 
      return(

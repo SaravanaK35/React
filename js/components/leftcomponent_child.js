@@ -1,6 +1,8 @@
 var React=require('react');
-var Grandchild=React.createClass({
+var Rightcomponent=require('./rightcomponent');
+var Left_child_component=React.createClass({
   render: function(){
+
     return(
       <div>
       <a href="#" name={this.props.name}>{this.props.id}</a>
@@ -8,4 +10,4 @@ var Grandchild=React.createClass({
     );
   }
 });
-module.exports=Grandchild;
+module.exports=Left_child_component;
