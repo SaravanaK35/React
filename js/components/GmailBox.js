@@ -4,6 +4,7 @@ var Leftcomponent=require('./leftcomponent');
 var Rightcomponent=require('./rightcomponent');
 var Left_child_component=require('./leftcomponent_child');
 var loadedData = false;
+var requiredData=[];
 var Gmail_auth = React.createClass({
  getInitialState: function()
    {
@@ -12,6 +13,7 @@ var Gmail_auth = React.createClass({
 
  gmailLogin: function()
  {
+   console.log("gmailLogin");
    var acToken, tokenType, expiresIn;
    var OAUTHURL    =   'https://accounts.google.com/o/oauth2/v2/auth?';
    var SCOPE       =   'https://mail.google.com/ https://www.googleapis.com/auth/gmail.readonly';
@@ -61,6 +63,7 @@ var Gmail_auth = React.createClass({
 
  allLabels: function()
  {
+     console.log("allLabels");
      var accessToken = localStorage.getItem('gToken');
      $.ajax({
       url: 'https://www.googleapis.com/gmail/v1/users/me/labels?key={AIzaSyD8CAIfrpvW_IzWnAjpNNxcVguW5ic9g_0}',
@@ -81,7 +84,7 @@ var Gmail_auth = React.createClass({
    });
 
    $.ajax({
-     url: 'https://www.googleapis.com/gmail/v1/users/me/messages?key={AIzaSyD8CAIfrpvW_IzWnAjpNNxcVguW5ic9g_0}',
+     url: 'https://www.googleapis.com/gmail/v1/users/me/messages?labelIds=INBOX&key={AIzaSyD8CAIfrpvW_IzWnAjpNNxcVguW5ic9g_0}',
      dataType: 'json',
      type: 'GET',
      async:'false',
@@ -102,11 +105,33 @@ var Gmail_auth = React.createClass({
 
    });
 
-
-
-
  },
 
+allData: function(data_name)
+ {
+   var accessToken = localStorage.getItem('gToken');
+  $.ajax({
+    url: 'https://www.googleapis.com/gmail/v1/users/me/messages?labelIds='+data_name+'&key={AIzaSyD8CAIfrpvW_IzWnAjpNNxcVguW5ic9g_0}',
+    dataType: 'json',
+    type: 'GET',
+    async:'false',
+    beforeSend: function (request)
+    {
+      request.setRequestHeader("Authorization", "Bearer "+accessToken);
+    },
+    success: function(data)
+    {
+
+      this.setState({allInboxID:data.messages});
+
+      loadedData=true;
+    }.bind(this),
+    error: function(xhr, status, err) {
+      console.error(err.toString());
+    }.bind(this)
+
+  });
+},
 
  render:function()
  {
@@ -115,7 +140,7 @@ var Gmail_auth = React.createClass({
 
    if(loadedData){
 
-    leftPanel =  <Leftcomponent data2={this.state.allLabelsData} />
+    leftPanel =  <Leftcomponent data2={this.state.allLabelsData} data1={this.allData}/>
      rightPanel= <Rightcomponent data3={this.state.allInboxID} />
    }
 
@@ -124,7 +149,7 @@ var Gmail_auth = React.createClass({
            <div className="container-fluid">
              <div className="row">
                  <div className="col-lg-1">
-                  <button id="authorize-button" onClick={this.gmailLogin} className="btn btn-primary pull-left">Sign_In</button>
+                  <button id="authorize-button" onClick={this.gmailLogin} className="btn btn-primary pull-left">bravo</button>
                   </div>
                   <div className="col-lg-8 pull-right">
                     <h2>ReactMails</h2>

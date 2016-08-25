@@ -8,6 +8,7 @@ var RightChildChild=React.createClass({
                 <h6>{this.props.fromValue}</h6>
                 <h6>{this.props.subjValue}</h6>
                 <h6>{this.props.dateValue}</h6>
+                <hr></hr>
             </div>
         );
     }
