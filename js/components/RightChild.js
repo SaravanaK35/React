@@ -5,6 +5,7 @@ var RightChild=React.createClass({
 
 	render:function(){
 		var inBox= this.props.inbox.map(function(inbox_id) {
+			console.log("in rightchild");
       return(
         <RightChildChild fromValue={inbox_id.fromValue} subjValue={inbox_id.subjValue} dateValue={inbox_id.dateValue} />
       );

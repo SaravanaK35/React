@@ -7,6 +7,16 @@ var Rightcomponent=React.createClass({
   {
 	 return({data_1:[]});
   },
+	componentWillMount: function() {
+		console.log("will");
+		var that = this;
+		var inBox= that.props.data3.map(function(inbox_id) {
+			console.log("will"+inbox_id);
+    return(
+		that.inbox(inbox_id.id)
+	);
+  });
+	},
 	inbox: function(id)
 	{
 		var thatttt=this;
@@ -15,7 +25,7 @@ var Rightcomponent=React.createClass({
 
 			var accessToken = localStorage.getItem('gToken');
 			$.ajax({
-			 url: 'https://www.googleapis.com/gmail/v1/users/me/messages/'+id+'?key={AIzaSyAaOBSpOI5VpQ4TlFs-NqQ0T-3Dr3xU4EM}',
+			 url: 'https://www.googleapis.com/gmail/v1/users/me/messages/'+id+'?key={AIzaSyD8CAIfrpvW_IzWnAjpNNxcVguW5ic9g_0}',
 			 dataType: 'json',
 			 type: 'GET',
 			 async:'false',
@@ -39,8 +49,9 @@ var Rightcomponent=React.createClass({
        }
       requiredData.push({"fromValue":fromValue,"subjValue":subjValue,"dateValue":dateValue});
 			   console.log(requiredData[0].fromValue);
+				 console.log(requiredData[0].subjValue);
+				 console.log(requiredData[0].dateValue);
 				 thatttt.setState({data_1:requiredData});
-
 				 loadedData=true;
 			 }.bind(thatttt),
 			 error: function(xhr, status, err) {
@@ -50,19 +61,8 @@ var Rightcomponent=React.createClass({
 	},
 
 	render:function(){
-		var that = this;
-		var inBox= this.props.data3.map(function(inbox_id) {
-    console.log(inbox_id.id);
-		console.log(inbox_id.threadId);
-		that.inbox(inbox_id.id);
-
-      return(
-				<div>
-        <RightChild inbox={that.state.data_1} />
-				</div>
-      );
-    });
-
+		console.log("rightrender");
+		var inBox=<RightChild inbox={this.state.data_1} />
 		return(
 			<div>
          {inBox}

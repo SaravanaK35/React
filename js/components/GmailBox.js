@@ -15,7 +15,7 @@ var Gmail_auth = React.createClass({
    var acToken, tokenType, expiresIn;
    var OAUTHURL    =   'https://accounts.google.com/o/oauth2/v2/auth?';
    var SCOPE       =   'https://mail.google.com/ https://www.googleapis.com/auth/gmail.readonly';
-   var CLIENTID    =   '57968096688-lj3fg9a5mj4ugoele7qrj7k80uaiqo9o.apps.googleusercontent.com';
+   var CLIENTID    =   '130564948296-qf2vidot4sr8p23a2resd6ga70abik2q.apps.googleusercontent.com';
    var REDIRECT    =   'http://localhost:8080';
    var TYPE        =   'token';
    var _url        =   OAUTHURL + 'scope=' + SCOPE + '&client_id=' + CLIENTID + '&redirect_uri=' + REDIRECT + '&response_type=' + TYPE;
@@ -63,7 +63,7 @@ var Gmail_auth = React.createClass({
  {
      var accessToken = localStorage.getItem('gToken');
      $.ajax({
-      url: 'https://www.googleapis.com/gmail/v1/users/me/labels?key={AIzaSyAaOBSpOI5VpQ4TlFs-NqQ0T-3Dr3xU4EM}',
+      url: 'https://www.googleapis.com/gmail/v1/users/me/labels?key={AIzaSyD8CAIfrpvW_IzWnAjpNNxcVguW5ic9g_0}',
       dataType: 'json',
       type: 'GET',
       beforeSend: function (request)
@@ -81,7 +81,7 @@ var Gmail_auth = React.createClass({
    });
 
    $.ajax({
-     url: 'https://www.googleapis.com/gmail/v1/users/me/messages?key={AIzaSyAaOBSpOI5VpQ4TlFs-NqQ0T-3Dr3xU4EM}',
+     url: 'https://www.googleapis.com/gmail/v1/users/me/messages?key={AIzaSyD8CAIfrpvW_IzWnAjpNNxcVguW5ic9g_0}',
      dataType: 'json',
      type: 'GET',
      async:'false',
@@ -124,7 +124,7 @@ var Gmail_auth = React.createClass({
            <div className="container-fluid">
              <div className="row">
                  <div className="col-lg-1">
-                  <button id="authorize-button" onClick={this.gmailLogin} className="btn btn-primary pull-left">SignIn</button>
+                  <button id="authorize-button" onClick={this.gmailLogin} className="btn btn-primary pull-left">Sign_In</button>
                   </div>
                   <div className="col-lg-8 pull-right">
                     <h2>ReactMails</h2>

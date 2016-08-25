@@ -2,6 +2,7 @@ var React=require("react");
 
 var RightChildChild=React.createClass({
     render:function(){
+      console.log("in rightchildchild");
         return(
             <div>
                 <h6>{this.props.fromValue}</h6>
