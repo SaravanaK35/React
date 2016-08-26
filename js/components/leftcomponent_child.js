@@ -4,6 +4,7 @@ var Left_child_component=React.createClass({
 
  handleSort: function(data_id) {
    console.log("handle"+data_id);
+
    this.props.data1(data_id);
  },
 
@@ -11,8 +12,8 @@ var Left_child_component=React.createClass({
   render: function(){
 
     return(
-      <div>
-      <a href="#" name={this.props.name} onClick={() => this.handleSort(this.props.id)}>{this.props.id}</a>
+      <div className="maillabels">
+      <a href="#"  name={this.props.name} onClick={() => this.handleSort(this.props.id)}>{this.props.id}</a>
       </div>
     );
   }

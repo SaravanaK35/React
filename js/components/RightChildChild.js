@@ -5,11 +5,16 @@ var RightChildChild=React.createClass({
       console.log("in rightchildchild");
         return(
             <div>
-                <h6>{this.props.fromValue}</h6>
-                <h6>{this.props.subjValue}</h6>
-                <h6>{this.props.dateValue}</h6>
-                <hr></hr>
-            </div>
+            <table className="table table-inbox table-hover">
+              <tbody>
+                <tr>
+                  <td>{this.props.fromValue}</td>
+                  <td>{this.props.subjValue}</td>
+                  <td>{this.props.dateValue}</td>
+                </tr>
+              </tbody>
+            </table>
+           </div>
         );
     }
 });

@@ -31,19 +31,34 @@ var Rightcomponent=React.createClass({
 	       var fromValue;
 	       var subjValue;
 	       var dateValue;
+         var toValue;
 	       for(var j=0;j < data.payload.headers.length;j++){
 	         if(data.payload.headers[j].name=="From")
 	           fromValue=data.payload.headers[j].value;
+           else if(data.payload.headers[j].name=="To")
+		         toValue=data.payload.headers[j].value;
 	         else if(data.payload.headers[j].name=="Subject")
 	           subjValue=data.payload.headers[j].value;
 	         else if(data.payload.headers[j].name=="Date")
 	            dateValue=data.payload.headers[j].value;
 	       }
-	      requiredData.push({"fromValue":fromValue,"subjValue":subjValue,"dateValue":dateValue});
-				   console.log(requiredData[0].fromValue);
-					 console.log(requiredData[0].subjValue);
-					 console.log(requiredData[0].dateValue);
+				 for(var i=0;i < data.labelIds.length;i++){
+					 if(data.labelIds[i] == "INBOX"|| data.labelIds[i] == "TRASH")
+					 {
+						 console.log("inortr");
+		      requiredData.push({"fromValue":fromValue,"subjValue":subjValue,"dateValue":dateValue});
+				   }
+					 if(data.labelIds[i] == "SENT" || data.labelIds[i] == "DRAFT")
+	         {
+						 console.log("sedr");
+	 				requiredData.push({"toValue":toValue,"subjValue":subjValue,"dateValue":dateValue});
+				   }
+				 }
+
+
+
 					 that.setState({data_1:requiredData});
+					 console.log("reqdata"+requiredData[0].fromValue);
 					 loadedData=true;
 				 }.bind(that),
 				 error: function(xhr, status, err) {
@@ -74,6 +89,7 @@ var Rightcomponent=React.createClass({
 	render:function(){
 		console.log("rightrender");
 		var inBox=<RightChild inbox={this.state.data_1} />
+		console.log("rightexe");
 		return(
 			<div>
          {inBox}
