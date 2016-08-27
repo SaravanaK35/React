@@ -152,7 +152,7 @@ allData: function(data_name)
                   <button id="authorize-button" onClick={this.gmailLogin} className="btn btn-primary pull-left">SignIn</button>
                   </div>
                   <div className="col-lg-8 pull-right">
-                    <h2>ReactMails</h2>
+                    <h2>Welcome To Thats y Mail</h2>
                   </div>
               </div>
                <div className="row">
@@ -160,6 +160,8 @@ allData: function(data_name)
                     {leftPanel}
                   </div>
                  <div className="col-lg-10">
+                 <br/>
+                 <br/>
                  {rightPanel}
                  </div>
                </div>

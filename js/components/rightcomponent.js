@@ -5,6 +5,26 @@ var Rightcomponent=React.createClass({
   {
 	 return({data_1:[]});
   },
+
+	getHTMLPart: function(arr)
+	   {
+	     for(var x = 0; x <= arr.length; x++)
+	     {
+	       if(typeof arr[x].parts === 'undefined')
+	       {
+	         if(arr[x].mimeType === 'text/html')
+	         {
+	           return arr[x].body.data;
+	         }
+	       }
+	       else
+	       {
+	         return this.getHTMLPart(arr[x].parts);
+	       }
+	     }
+	     return '';
+	   },
+
 	manipulatedData:function(){
 
 	var requiredData=[];
@@ -32,6 +52,17 @@ var Rightcomponent=React.createClass({
 	       var subjValue;
 	       var dateValue;
          var toValue;
+
+
+				   if(typeof data.payload.parts === 'undefined')
+				     {
+				       encodedBody = data.payload.body.data;
+				     }
+				     else
+				     {
+				       encodedBody = that.getHTMLPart(data.payload.parts);
+				     }
+
 	       for(var j=0;j < data.payload.headers.length;j++){
 	         if(data.payload.headers[j].name=="From")
 	           fromValue=data.payload.headers[j].value;
@@ -46,12 +77,12 @@ var Rightcomponent=React.createClass({
 					 if(data.labelIds[i] == "INBOX"|| data.labelIds[i] == "TRASH")
 					 {
 						 console.log("inortr");
-		      requiredData.push({"fromValue":fromValue,"subjValue":subjValue,"dateValue":dateValue});
+		      requiredData.push({"fromValue":fromValue,"subjValue":subjValue,"dateValue":dateValue,"messagedata":encodedBody});
 				   }
 					 if(data.labelIds[i] == "SENT" || data.labelIds[i] == "DRAFT")
 	         {
 						 console.log("sedr");
-	 				requiredData.push({"toValue":toValue,"subjValue":subjValue,"dateValue":dateValue});
+	 				requiredData.push({"toValue":toValue,"subjValue":subjValue,"dateValue":dateValue,"messagedata":encodedBody});
 				   }
 				 }
 
@@ -87,6 +118,10 @@ var Rightcomponent=React.createClass({
 
 
 	render:function(){
+
+
+
+
 		console.log("rightrender");
 		var inBox=<RightChild inbox={this.state.data_1} />
 		console.log("rightexe");

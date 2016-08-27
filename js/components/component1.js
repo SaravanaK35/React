@@ -6,7 +6,7 @@ var Childcomponent_1= React.createClass({
   			<div className="container">
   				<div className="nav-collapse collapse navbar-responsive-collapse">
   					<ul className="nav navbar-nav pull-left">
-  						<li id="thatsyfood">Thats y Food</li>
+  						<li id="thatsyfood">Thats Y Mail</li>
   					</ul>
   				</div>
   				<div className="nav-collapse collapse navbar-responsive-collapse">
@@ -14,12 +14,15 @@ var Childcomponent_1= React.createClass({
   						<li className="active" id="home">
   							<a href="#" >Home</a>
   						</li>
-  						<li>
-  							<a href="#" >About Us</a>
-  						</li>
-  						<li>
-  							<a href="#" >Contact Us</a>
-  						</li>
+              <li className="dropdown">
+							<a href="#" className="dropdown-toggle" data-toggle="dropdown">My Account<strong className="caret"></strong></a>
+							<ul className="dropdown-menu">
+								<li><a href="#">Account Settings</a>
+								</li>
+								<li><a href="#">SignOut</a>
+								</li>
+							</ul>
+              </li>
             </ul>
 
   				</div>

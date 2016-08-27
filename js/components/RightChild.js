@@ -12,14 +12,14 @@ var RightChild=React.createClass({
 
 			if(inbox_id.fromValue){
       return(
-        <RightChildChild fromValue={inbox_id.fromValue} subjValue={inbox_id.subjValue} dateValue={inbox_id.dateValue} />
+        <RightChildChild fromValue={inbox_id.fromValue} subjValue={inbox_id.subjValue} dateValue={inbox_id.dateValue} messagedata={inbox_id.messagedata} />
       );
 		}
 
 		if(inbox_id.toValue){
 
 				return(
-	        <RightChildChild fromValue={inbox_id.toValue} subjValue={inbox_id.subjValue} dateValue={inbox_id.dateValue} />
+	        <RightChildChild fromValue={inbox_id.toValue} subjValue={inbox_id.subjValue} dateValue={inbox_id.dateValue} messagedata={inbox_id.messagedata}/>
 	      );
 			}
     });
