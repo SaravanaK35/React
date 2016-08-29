@@ -1,5 +1,5 @@
 var React = require('react');
-var Childcomponent_1=require('./component1');
+var Childcomponent_1=require('./NavBar');
 var Leftcomponent=require('./leftcomponent');
 var Rightcomponent=require('./rightcomponent');
 var Left_child_component=require('./leftcomponent_child');
@@ -148,6 +148,8 @@ allData: function(data_name)
        <div className="GmailBox">
            <div className="container-fluid">
              <div className="row">
+                 <br/>
+                 <br/>
                  <div className="col-lg-1">
                   <button id="authorize-button" onClick={this.gmailLogin} className="btn btn-primary pull-left">SignIn</button>
                   </div>

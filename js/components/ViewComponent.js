@@ -1,11 +1,26 @@
 var React=require('react');
+var ReplyComponent=require('./ReplyComponent');
 var ViewComponent=React.createClass({
+
+
+getInitialState:function()
+{
+return({status:false});
+},
+
+change:function()
+{
+console.log("onclick of reply");
+this.setState({status:true});
+console.log(this.state.status);
+},
  appendToIframe: function(message)
  {
    var iFrameNode = this.refs.myIframe,
    frameDoc = iFrameNode.contentWindow.document;
    frameDoc.write(message);
  },
+
 
  componentDidMount: function(){
    var encodedBody = this.props.messagedata;
@@ -23,8 +38,8 @@ var ViewComponent=React.createClass({
          <div className="modal-dialog">
            <div className="modal-content">
              <div className="modal-header">
-               <button className="close" data-dismiss="modal">x</button>
-               <h4 className="modal-title">Compose Here !!!</h4>
+               <button onClick={this.props.hideView} className="close">x</button>
+               <h4 className="modal-title">View Mail</h4>
              </div>
 
              <div className="modal-body">
@@ -49,7 +64,8 @@ var ViewComponent=React.createClass({
              </div>
 
              <div className="modal-footer">
-               <button className="btn btn-warning" data-dismiss="modal" type="button">Reply</button>
+               <button type="button" className="btn btn-success" data-target="#myReply"  data-toggle="modal"  onClick={this.change} >Reply</button>
+               {this.state.status?<ReplyComponent fromValue={this.props.fromValue} subjValue={this.props.subjValue}/>:null}
              </div>
            </div>
          </div>

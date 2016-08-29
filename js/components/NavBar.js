@@ -1,5 +1,7 @@
 var React=require('react');
-var Childcomponent_1= React.createClass({
+var NavLink=require('./Navlink');
+
+var Navbar= React.createClass({
   render: function () {
     return(
       <div className="navbar navbar-inverse navbar-fixed-top">
@@ -11,8 +13,17 @@ var Childcomponent_1= React.createClass({
   				</div>
   				<div className="nav-collapse collapse navbar-responsive-collapse">
   					<ul className="nav navbar-nav pull-right" id="nav">
-  						<li className="active" id="home">
-  							<a href="#" >Home</a>
+  						<li>
+  							<NavLink to="/home">home</NavLink>
+  						</li>
+              <li>
+  							<NavLink to="/gmailbox">Gmail</NavLink>
+  						</li>
+              <li>
+  							<NavLink to="/about/React">About React</NavLink>
+  						</li>
+              <li>
+  							<NavLink to="/about/Router">About Route</NavLink>
   						</li>
               <li className="dropdown">
 							<a href="#" className="dropdown-toggle" data-toggle="dropdown">My Account<strong className="caret"></strong></a>
@@ -32,4 +43,4 @@ var Childcomponent_1= React.createClass({
     );
   }
 });
-module.exports=Childcomponent_1;
+module.exports=Navbar;

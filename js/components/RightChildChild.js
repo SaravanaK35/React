@@ -14,12 +14,18 @@ var RightChildChild=React.createClass({
     console.log(this.state.status);
     this.setState({status:true});
   },
+  hideView:function()
+  {
+    console.log(this.state.status);
+    this.setState({status:false});
+  },
+
     render:function(){
       console.log("in rightchildchild");
         return(
           <div>
           <div className="col-lg-12">
-               <table className="table table-inbox table-hover col-lg-12">
+               <table className="table table-inbox table-hover table-striped col-lg-12 test">
                 <tbody>
 
                   <tr>
@@ -28,7 +34,7 @@ var RightChildChild=React.createClass({
                         <td className="col-lg-4">{this.props.subjValue}</td>
                         <td className="col-lg-4">{this.props.dateValue}</td>
                       </a>
-                      {this.state.status?<ViewComponent fromValue={this.props.fromValue} subjValue={this.props.subjValue} dateValue={this.props.dateValue} messagedata={this.props.messagedata} />:null}
+                      {this.state.status?<ViewComponent hideView={this.hideView} fromValue={this.props.fromValue} subjValue={this.props.subjValue} dateValue={this.props.dateValue} messagedata={this.props.messagedata} />:null}
                   </tr>
 
                 </tbody>

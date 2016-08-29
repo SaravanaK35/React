@@ -1,7 +1,10 @@
 var React=require('react');
 var Reactdom=require('react-dom');
-var Childcomponent_1=require('./components/component1');
-var Gmail_auth=require('./components/GmailBox')
+var {browserHistory, Route, Router, IndexRoute}=require('react-router');
+var Navbar=require('./components/NavBar');
+var GmailBox=require('./components/GmailBox');
+var Home=require('./components/Home');
+var About=require('./components/About');
 
 
 var Maincomponent=React.createClass({
@@ -9,27 +12,10 @@ var Maincomponent=React.createClass({
 
   render: function() {
     return(
-      <div className="container">
-       <Childcomponent_1/>
-
-      <div className="container">
-           <div className="row" className="mainCont">
-              <div className="col-sm-4">
-          
-              </div>
-              <div className="col-sm-8">
-
-              </div>
-
-            </div>
-          </div>
-          <div className="container">
-              <div className="row">
-                 <div className="col-sm-12">
-                    <Gmail_auth />
-                 </div>
-              </div>
-          </div>
+      <div>
+         <Navbar/>
+         <br/><br/><br/><br/>
+         {this.props.children}
       </div>
     );
 
@@ -41,4 +27,12 @@ var Maincomponent=React.createClass({
 
 
 
-Reactdom.render(<Maincomponent />,document.getElementById('app'));
+Reactdom.render(
+  <Router history={browserHistory}>
+    <Route path="/" component={Maincomponent}>
+    <IndexRoute component={Home}/>
+      <Route path="/home" component={Home}/>
+      <Route path="/about/:aboutName" component={About}/>
+      <Route path="/gmailbox" component={GmailBox}/>
+    </Route>
+    </Router>,document.getElementById('app'));
