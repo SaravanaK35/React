@@ -74,7 +74,7 @@ var Rightcomponent=React.createClass({
 	            dateValue=data.payload.headers[j].value;
 	       }
 				 for(var i=0;i < data.labelIds.length;i++){
-					 if(data.labelIds[i] == "INBOX"|| data.labelIds[i] == "TRASH")
+					 if(data.labelIds[i] == "INBOX"|| data.labelIds[i] == "TRASH" || data.labelIds[i] == "IMPORTANT")
 					 {
 						 console.log("inortr");
 		      requiredData.push({"fromValue":fromValue,"subjValue":subjValue,"dateValue":dateValue,"messagedata":encodedBody});

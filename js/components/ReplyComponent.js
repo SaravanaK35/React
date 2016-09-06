@@ -75,7 +75,7 @@ return(
 
    <div className="modal-content">
      <div className="modal-header">
-       <button type="button" className="close" data-dismiss="modal">close</button>
+       <button type="button" className="close" data-dismiss="modal">X</button>
        <h4 className="modal-title">REPLY</h4>
      </div>
 
